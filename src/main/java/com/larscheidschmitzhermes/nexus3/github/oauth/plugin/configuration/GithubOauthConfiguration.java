@@ -55,7 +55,7 @@ public class GithubOauthConfiguration {
         configuration = new Properties();
 
         try {
-            configuration.load(Files.newInputStream(Paths.get(".", "etc", CONFIG_FILE)));
+            configuration.load(Files.newInputStream(Paths.get(System.getenv().getOrDefault("NEXUS_DATA", "."), "etc", CONFIG_FILE)));
         } catch (IOException e) {
             LOGGER.warn("Error reading github oauth properties, falling back to default configuration", e);
         }
